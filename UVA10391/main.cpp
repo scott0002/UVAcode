@@ -4,25 +4,19 @@ using namespace std;
 
 int main()
 {
-    set<string> s;
-    string tmp;
-    while(cin>>tmp)
-        s.insert(tmp);
-    for(set<string>::iterator i=s.begin(); i!=s.end(); i++)
+    set<string> w;
+    string s;
+    while(cin>>s)
+        w.insert(s);
+    for(auto x:w)
     {
-        string s1,s2;
-        for(int j=1; j<i->size(); j++)
-        {
-            s1=i->substr(0,j);
-            s2=i->substr(j,i->size()-j);
-            //cout<<*i<<endl;
-           //cout<<s1<<' '<<s2<<endl;
-            if(s.find(s1)!=s.end() && s.find(s2)!=s.end())
+        for(int i=0; i<x.size()-1; i++)
+            if(w.find(x.substr(0,i+1))!=w.end()\
+               &&w.find(x.substr(i+1,x.size()-i-1))!=w.end())
             {
-                cout<<*i<<endl;
+                cout<<x<<endl;
                 break;
             }
-        }
 
     }
     return 0;
